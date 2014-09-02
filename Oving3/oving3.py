@@ -8,6 +8,7 @@ class Node:
         self.posi = []
 
 
+
 def bygg(ordliste):
     toppnode = Node()
     i = 1
