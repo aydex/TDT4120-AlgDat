@@ -8,24 +8,28 @@ class Node:
         self.posi = []
 
 
-
 def bygg(ordliste):
     toppnode = Node()
-    i = 1
     for ord in ordliste:
-        toppnode.barn[o[0]] = i
-        i += 1
+        print ord[0]
+        print ord[1]
+        tempnode = Node()
+        #if toppnode.barn.has_key(ord[0]):
+            #toppnode.barn.update(ord[0], (toppnode.barn[ord[0]], toppnode.)
+        toppnode.barn[ord[0]] = tempnode
+        for letter in ord:
+            pass
+
 
 def posisjoner(ord, indeks, node):
-    # SKRIV DIN KODE HER
-
+    pass
 
 try:
     ord = stdin.readline().split()
     ordliste = []
     pos = 0
     for o in ord:
-        ordliste.append( (o,pos) )
+        ordliste.append( (o, pos) )
         pos += len(o) + 1
     toppnode = bygg(ordliste)
     for sokeord in stdin:
