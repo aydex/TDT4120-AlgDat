@@ -5,4 +5,3 @@ line = stdin.readline()
 keys = stdin.read()
 
 x = 0
-if '?'
