@@ -24,6 +24,14 @@ def q(a):
         return l + p + g
 
 
+def q2(a):
+    if len(a) <= 1:
+        return a
+    else:
+        p = a[0]
+        return q([x for x in a if x < p]) + [x for x in a if x == p] + q([x for x in a if x > p])
+
+
 def f(l, m, x):
     i = len(l)-1
     if m < l[0]:

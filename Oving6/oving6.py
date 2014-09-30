@@ -30,8 +30,7 @@ def quicksort(list):
     if len(list) <= 1:
         return list
     else:
-        #pivot = list[random.randint(0, len(list)-1)]
-        pivot = list[0]
+        pivot = list[-1]
         for i in list:
             if i < pivot:
                 less.append(i)
@@ -39,9 +38,18 @@ def quicksort(list):
                 greater.append(i)
             else:
                 pivot_list.append(i)
+
         less = quicksort(less)
         greater = quicksort(greater)
         return less + pivot_list + greater
+
+
+def quickquicksort(list):
+    if len(list) <= 1:
+        return list
+    else:
+        pivot = list[0]
+        return quicksort([x for x in list if x < pivot]) + [x for x in list if x == pivot] + quicksort([x for x in list if x > pivot])
 
 
 def qsort(list):
@@ -51,7 +59,6 @@ def qsort(list):
 
 
 def finn(list, min, max):
-    # Merk: resultatet ma returneres
     i = len(list)-1
     if min < list[0]:
         i = 0
@@ -83,7 +90,6 @@ def finn2(list, min, max):
 
 def main():
     liste = []
-    #random.seed()
     for x in stdin.readline().split():
         liste.append(int(x))
 
