@@ -11,22 +11,19 @@ def mst(nm):
     heap = []
     visited = []
     high = 0
-    current_node = 0
-    for e in xrange(0, len(nm[current_node])):
-        current_weight = nm[current_node][e]
-        if current_weight < Inf() and nm[current_node] not in visited:
-            heappush(heap, (current_weight, current_node, e))
-    while heap:
-        current_edge = heappop(heap)
-        visited.append(nm[current_edge[1]])
-        current_node = current_edge[2]
-        root = current_edge[0]
-        for e in xrange(0, len(nm[current_node])):
-            current_weight = nm[current_node][e]
-            if current_weight < Inf() and nm[current_node] not in visited:
-                heappush(heap, (current_weight, current_node, e))
+    next_node = 0
+    root = -Inf()
+    while len(visited) != len(nm):
+        for e in xrange(0, len(nm[next_node])):
+            current_weight = nm[next_node][e]
+            if current_weight < Inf() and nm[next_node] not in visited:
+                heappush(heap, (current_weight, next_node, e))
                 if root > high:
                     high = root
+        current_edge = heappop(heap)
+        visited.append(nm[current_edge[1]])
+        next_node = current_edge[2]
+        root = current_edge[0]
     return high
 
 
