@@ -39,8 +39,10 @@ def main():
     for line in stdin:
         (index, list) = line.split(':')
         deck = zip(map(int, list.split(',')), repeat(index))
-        decks.append(deck)
-    print decks
-    print merge_sort(decks)
+        decks.extend([x for x in deck])
+    word = ""
+    for x in ([x[1] for x in merge_sort(decks)]):
+        word += x
+    print word
 
 main()
