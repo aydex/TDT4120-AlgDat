@@ -1,5 +1,5 @@
 from math import floor
-import random
+#import random
 
 __author__ = 'adrianh'
 from sys import stdin
@@ -24,13 +24,13 @@ def countingsort(list):
 
 
 def quicksort(list):
-    # Merk: den sorterte lista ma returneres
     less = []
     pivot_list = []
     greater = []
     if len(list) <= 1:
         return list
     else:
+        #pivot = list[random.randint(0, len(list)-1)]
         pivot = list[0]
         for i in list:
             if i < pivot:
@@ -42,6 +42,12 @@ def quicksort(list):
         less = quicksort(less)
         greater = quicksort(greater)
         return less + pivot_list + greater
+
+
+def qsort(list):
+    return (qsort([y for y in list[1:] if y < list[0]]) +
+            list[:1] +
+            qsort([y for y in list[1:] if y >= list[0]])) if len(list) > 1 else list
 
 
 def finn(list, min, max):
@@ -60,23 +66,30 @@ def finn(list, min, max):
         while max > list[i]:
             i += 1
         newmax = list[i]
-    ma = newmin, newmax
-    return ma
+    return newmin, newmax
 
 
-def midpoint(nedre, ovre):
-    return floor((nedre+ovre)/2)
+def finn2(list, min, max):
+    if min <= list[0]:
+        min = list[0]
+    else:
+        min = [x for x in list if min >= x][-1]
+    if max >= list[-1]:
+        max = list[-1]
+    else:
+        max = [x for x in list if max <= x][0]
+    return min, max
 
 
 def main():
     liste = []
-    random.seed()
+    #random.seed()
     for x in stdin.readline().split():
         liste.append(int(x))
 
     #print liste
-    #sortert = quicksort(liste)
-    sortert = countingsort(liste)
+    sortert = quicksort(liste)
+    #sortert = qsort(liste)
     #print sortert
 
     for linje in stdin:

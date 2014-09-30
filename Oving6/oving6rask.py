@@ -29,18 +29,11 @@ def finn(list, min, max):
     if min <= list[0]:
         min = list[0]
     else:
-        #min = [x for x in list if list[x] > min]
-        for i in xrange(0, len(list)-1):
-            if list[i] > min:
-                min = list[i-1]
-                break
+        min = [x for x in list if min >= x][-1]
     if max >= list[-1]:
         max = list[-1]
     else:
-        for i in xrange(0, len(list)-1):
-            if list[i] >= max:
-                max = list[i]
-                break
+        max = [x for x in list if max <= x][0]
     return min, max
 
 
@@ -57,6 +50,7 @@ def finn2(list, min, max):
     if max > list[-1]:
         max = list[-1]
     else:
+        i = 0
         while max > list[i]:
             i += 1
         max = list[i]
