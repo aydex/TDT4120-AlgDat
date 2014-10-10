@@ -51,16 +51,10 @@ def f(l, m, x):
 
 
 def main():
-    l = []
-    a = l.append
-    for x in stdin.readline().split():
-        a(int(x))
+    l = (map(int, stdin.readline().split()))
     s = q(l)
     for linje in stdin:
         o = linje.split()
-        m = int(o[0])
-        x = int(o[1])
-        r = f(s, m, x)
-        print str(r[0]) + " " + str(r[1])
-
+        r = f(s, int(o[0]), int(o[1]))
+        print r[0], r[1]
 main()

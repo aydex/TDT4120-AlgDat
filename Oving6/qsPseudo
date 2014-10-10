@@ -1,0 +1,20 @@
+quicksort(A, i, k):
+  if i < k:
+    p := partition(A, i, k)
+    quicksort(A, i, p - 1)
+    quicksort(A, p + 1, k)
+
+// left is the index of the leftmost element of the subarray
+  // right is the index of the rightmost element of the subarray (inclusive)
+  // number of elements in subarray = right-left+1
+  partition(array, left, right)
+     pivotIndex := choosePivot(array, left, right)
+     pivotValue := array[pivotIndex]
+     swap array[pivotIndex] and array[right]
+     storeIndex := left
+     for i from left to right - 1
+         if array[i] < pivotValue
+             swap array[i] and array[storeIndex]
+             storeIndex := storeIndex + 1
+     swap array[storeIndex] and array[right]  // Move pivot to its final place
+     return storeIndex

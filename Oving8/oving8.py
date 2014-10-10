@@ -3,6 +3,7 @@ from sys import stdin, stderr
 
 
 def beste_sti(nm, sans):
+
     return
 
 
