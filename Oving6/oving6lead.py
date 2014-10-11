@@ -1,6 +1,3 @@
-from sys import stdin
-
-
 def q(a):
     l = []
     p = []
@@ -59,9 +56,11 @@ def u(A, v):
 
 
 def main():
+    from sys import stdin
+    import gc
+    gc.disable()
     l = (map(int, stdin.readline().split()))
-    s = q(l)
-    i = 0
+    s = q(list(set(l)))
     a = dict()
     b = dict()
     for linje in stdin:

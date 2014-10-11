@@ -1,20 +1,3 @@
-from sys import stdin
-from itertools import repeat
-
-
-def merge_sort(decks):
-    if len(decks) <= 1:
-        return decks
-
-    mid = len(decks)/2
-    left = decks[:mid]
-    right = decks[mid:]
-
-    left = merge_sort(left)
-    right = merge_sort(right)
-    return merge(left, right)
-
-
 def merge(left, right):
     result = []
     left_i, right_i = 0, 0
@@ -35,13 +18,18 @@ def merge(left, right):
 
 
 def main():
+    from sys import stdin
+    from itertools import repeat
     decks = []
     for line in stdin:
         (index, list) = line.split(':')
         deck = zip(map(int, list.split(',')), repeat(index))
-        decks.extend([x for x in deck])
+        decks.append(deck)
     word = ""
-    for x in ([x[1] for x in merge_sort(decks)]):
+    sorted = []
+    for i in xrange(0, len(decks)):
+        sorted = (merge(sorted, decks[i]))
+    for x in ([x[1] for x in sorted]):
         word += x
     print word
 
