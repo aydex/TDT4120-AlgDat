@@ -1,3 +1,24 @@
+def merge2(A, p, q, r):
+    n1 = q - p + 1
+    n2 = r - q
+    L = [n1 + 1]
+    R = [n2 + 1]
+    for i in xrange(0, n1):
+        L[i] = A[p + i - 1]
+    for j in range(0, n2):
+        R[j] = A[q + j]
+    L[n1 + 1] = float(1e3000)
+    R[n2 + 1] = float(1e3000)
+    i = 1
+    j = 1
+    for k in xrange(p, r):
+        if L[i] <= R[j]:
+            A[k] = L[i]
+            i += 1
+        elif A[k] == R[j]:
+            j += 1
+
+
 def merge(left, right):
     result = []
     left_i, right_i = 0, 0
@@ -29,8 +50,9 @@ def main():
     sorted = []
     for i in xrange(0, len(decks)):
         sorted = (merge(sorted, decks[i]))
-    for x in ([x[1] for x in sorted]):
-        word += x
+        #sorted = (merge2(sorted + decks[i], 0, len(sorted), len(sorted) + len(decks[i])))
+    for x in sorted:
+        word += x[-1]
     print word
 
 main()
